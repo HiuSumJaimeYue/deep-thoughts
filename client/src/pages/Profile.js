@@ -8,6 +8,7 @@ import { QUERY_USER, QUERY_ME } from '../utils/queries';
 import { ADD_FRIEND } from '../utils/mutations';
 import { useQuery, useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
+import ThoughtForm from '../components/ThoughtForm';
 
 const Profile = () => {
   const [addFriend] = useMutation(ADD_FRIEND);
@@ -63,6 +64,7 @@ const Profile = () => {
         <div className="col-12 mb-3 col-lg-8">
           <ThoughtList thoughts={user.thoughts} title={`${user.username}'s thoughts...`} />
         </div>
+        
 
         <div className="col-12 col-lg-3 mb-3">
           <FriendList
@@ -72,6 +74,7 @@ const Profile = () => {
           />
         </div>
       </div>
+      <div className="mb-3">{!userParam && <ThoughtForm />}</div>
     </div>
   );
 };
